@@ -51,6 +51,8 @@ obj-y				+= agp/
 obj-$(CONFIG_PCMCIA)		+= pcmcia/
 
 obj-$(CONFIG_HANGCHECK_TIMER)	+= hangcheck-timer.o
+obj-y                          += virtdrm.o
+virtdrm-objs                   := virtd
 obj-$(CONFIG_TCG_TPM)		+= tpm/
 
 obj-$(CONFIG_PS3_FLASH)		+= ps3flash.o
