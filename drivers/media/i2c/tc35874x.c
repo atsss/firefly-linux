@@ -2479,7 +2479,7 @@ static const struct of_device_id tc35874x_of_match[] = {
 MODULE_DEVICE_TABLE(of, tc35874x_of_match);
 #endif
 
-static struct i2c_driver tc35874x_driver = {
+static struct i2c_driver tc35874x_i2c_driver = {
 	.driver = {
 		.name = TC35874X_NAME,
 		.of_match_table = of_match_ptr(tc35874x_of_match),
@@ -2489,15 +2489,15 @@ static struct i2c_driver tc35874x_driver = {
 	.id_table = tc35874x_id,
 };
 
-static int __init tc35874x_driver_init(void)
+static int __init sensor_mod_init(void)
 {
-	return i2c_add_driver(&tc35874x_driver);
+	return i2c_add_driver(&tc35874x_i2c_driver);
 }
 
-static void __exit tc35874x_driver_exit(void)
+static void __exit sensor_mod_exit(void)
 {
-	i2c_del_driver(&tc35874x_driver);
+	i2c_del_driver(&tc35874x_i2c_driver);
 }
 
-device_initcall_sync(tc35874x_driver_init);
-module_exit(tc35874x_driver_exit);
+device_initcall_sync(sensor_mod_init);
+module_exit(sensor_mod_exit);
