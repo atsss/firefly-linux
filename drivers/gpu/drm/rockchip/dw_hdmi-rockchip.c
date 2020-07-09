@@ -1138,7 +1138,6 @@ dw_hdmi_rockchip_set_property(struct drm_connector *connector,
 		else
 			return drm_atomic_connector_set_property(connector, state,
 								 property, val);
-	}
 }
 
 static int
