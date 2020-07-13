@@ -17,7 +17,6 @@
 #include <linux/pm_runtime.h>
 #include <linux/phy/phy.h>
 
-#include <drm/drm_atomic.h>
 #include <drm/drm_of.h>
 #include <drm/drmP.h>
 #include <drm/drm_crtc_helper.h>
@@ -1138,6 +1137,7 @@ dw_hdmi_rockchip_set_property(struct drm_connector *connector,
 		else
 			return drm_atomic_connector_set_property(connector, state,
 								 property, val);
+	}
 }
 
 static int
