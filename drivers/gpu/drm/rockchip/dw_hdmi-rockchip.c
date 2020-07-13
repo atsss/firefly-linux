@@ -17,6 +17,7 @@
 #include <linux/pm_runtime.h>
 #include <linux/phy/phy.h>
 
+#include <drm/drm_atomic.h>
 #include <drm/drm_of.h>
 #include <drm/drmP.h>
 #include <drm/drm_crtc_helper.h>
