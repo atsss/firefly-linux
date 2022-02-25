@@ -53,8 +53,10 @@ else
 	LINUX_COMPILE_HOST=$KBUILD_BUILD_HOST
 fi
 
-LINUX_BRANCH=$(git branch | grep "\*" | awk -F ' ' '{print $2}')
 LINUX_COMMIT=$(git log -1 | grep "commit" | awk -F ' ' '{print $2}')
+
+XML_PATH=$(readlink -f ../.repo/manifest.xml)
+XML_NAME=${XML_PATH##*/}
 
 UTS_VERSION="#$VERSION"
 CONFIG_FLAGS=""
@@ -79,8 +81,9 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
   echo \#define LINUX_COMPILE_BY \"`echo $LINUX_COMPILE_BY | $UTS_TRUNCATE`\"
   echo \#define LINUX_COMPILE_HOST \"`echo $LINUX_COMPILE_HOST | $UTS_TRUNCATE`\"
 
-  echo \#define LINUX_BRANCH \"`echo $LINUX_BRANCH | $UTS_TRUNCATE`\"
-  echo \#define LINUX_COMMIT \"`echo $LINUX_COMMIT | $UTS_TRUNCATE`\"
+  echo \#define LINUX_COMMIT \"`echo kernel commit id: $LINUX_COMMIT | $UTS_TRUNCATE`\"
+
+  echo \#define XML_NAME \"`echo sdk version: $XML_NAME | $UTS_TRUNCATE`\"
 
   echo \#define LINUX_COMPILER \"`$CC -v 2>&1 | grep ' version '`\"
 ) > .tmpcompile
