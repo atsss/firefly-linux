@@ -1566,10 +1566,6 @@ static int tc35874x_s_ctrl(struct v4l2_ctrl *ctrl)
 	return 0;
 }
 
-static const struct v4l2_ctrl_ops tc35874x_ctrl_ops = {
-	.s_ctrl = tc35874x_s_ctrl,
-};
-
 /* --------------- VIDEO OPS --------------- */
 
 static int tc35874x_g_input_status(struct v4l2_subdev *sd, u32 *status)
@@ -2040,6 +2036,7 @@ static long tc35874x_compat_ioctl32(struct v4l2_subdev *sd,
 
 static const struct v4l2_ctrl_ops tc35874x_ctrl_ops = {
 	.g_volatile_ctrl = tc35874x_get_ctrl,
+	.s_ctrl = tc35874x_s_ctrl,
 };
 
 static const struct v4l2_subdev_core_ops tc35874x_core_ops = {
